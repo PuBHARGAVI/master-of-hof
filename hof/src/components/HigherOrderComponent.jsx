@@ -16,18 +16,20 @@ class HigherOrderComponent extends Component {
     }
   
 // display all users
-renderusers = () => {
-    const mapRows = this.state.userData.map((user) => (
-        <React.Fragment key={user.id}>
+renderItems = () => {
+    const data = this.state.userData;
+    const mapRows = data.map((item) => (
+        <React.Fragment key={item.id}>
             <li className="list-elements">
-                <span>Id: {user.id}</span>
-                <span>Name : {user.name}</span>
-                <span>User Type: {user.user_type}</span>
+                <span>Id: {item.id}</span>
+                <span>Name : {item.name}</span>
+                <span>User Type: {item.user_type}</span>
            </li>
         </React.Fragment>
     ));
     return mapRows;
 };
+
 
 renderUsersBasedOnUserType = () => {
     const maprows = this.state.userData.filter(user => {
@@ -91,23 +93,23 @@ render() {
     return(
     <React.Fragment>
         <h1>Display all users</h1>
-        <div style={{border:'2px solid'}}>
-        <p>{this.renderusers()} </p>
+        <div class="displaybox">
+        <p>{this.renderItems()} </p>
         </div>
         <h1>Display based on usertype</h1>
-        <div style={{border:'2px solid'}}>
+        <div class="displaybox">
             <p>{this.renderUsersBasedOnUserType()} </p>
         </div>
         <h1>Filter all data starting with J</h1>
-        <div style={{border:'2px solid'}}>
+        <div class="displaybox">
             <p>{this.renderUsersBasedOnFirstCharacter()} </p>
         </div>
         <h1>Filter all data based on age greaterthan 28 and age lessthan or equal to 50  </h1>
-        <div style={{border:'2px solid'}}>
+        <div class="displaybox">
             <p>{this.renderUsersBasedOnAge()} </p>
         </div>
         <h1>Find the total years of designers </h1>
-        <div style={{border:'2px solid'}}>
+        <div class="displaybox">
             <p>{this.renderDesignersBasedOnYears()} </p>
         </div>
     </React.Fragment>);
